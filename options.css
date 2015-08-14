@@ -1,0 +1,35 @@
+body {
+    background-image: url("bg.jpg");
+    width: 250px;
+}
+
+header
+{
+  text-align: center;
+  position: center;
+  height: 45px;
+  margin-bottom: 40px;
+}
+
+wrapper {
+    text-align: right;
+}
+
+button {
+    position: right;
+    top: 50%;
+}
+
+.rulesDescription{
+    white-space:pre; /* or pre-wrap if you want wrapping to still work. */
+}
+
+input[type="text"],select {
+  padding: 4px;
+  border: solid 1px #339966;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+input[type="text"]:focus,select:focus{
+  border: solid 1px #0A1E14;
+  box-shadow: 0 0 5px 1px #969696;
+}

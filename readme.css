@@ -1,0 +1,47 @@
+body {
+   #background-image: url("bg.jpg");
+}
+
+header
+{
+  text-align: center;
+  position: center;
+  height: 45px;
+  margin-bottom: 40px;
+}
+
+p {
+    font-size: 150%;
+}
+
+button.settings {
+    background:none;
+    border:none; 
+    cursor: pointer;
+    color: #0B00BB;
+    font-size: 100%
+
+}
+
+#intro {
+    font-size: 150%;
+    background-image: url("gradient_bg.png");
+}
+#newRule {
+    font-size: 150%;
+ 
+}
+.tutorialImages {
+   margin: -30px 60px;
+   position: absolute;
+   
+}
+
+#settingsImage {
+    position: relative-z;
+    align: center;
+}
+
+#setDefaultDownloadsFolder {
+    float:left;
+}

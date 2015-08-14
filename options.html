@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="options.css" rel="stylesheet" type="text/css">
+    <title>Download Filename Controller</title>
+    <script src="options.js"></script>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="downloads_64.png" srcset="downloads_128.png 2x">
+    </header>
+
+    <table id="rules"></table>
+    <button id="new">New Rule</button>
+    <button id="clearAll">Clear Rules</button>
+    <button id="readme">How to Use</button>
+    <button id="exportRules">Export Rules</button>
+    <button id="importRules">Import Rules</button>
+
+    <table hidden="">
+        <tr hidden="" id="rule-template">
+            <td class="nowrap">
+                <button class="move-up">&uarr;</button>
+                <button class="move-down">&darr;</button>
+            </td>
+
+            <td>
+                <span class="rulesDescription">filename rule          file extension rule</span>
+                <div> 
+                <select class="regex" id="regex">
+                    <option selected="selected" value="extension">file extension</option>
+                    <option value="contains">part of filename</option>
+                    <option value="regexMatch">regular expression</option>
+                </select>
+                
+                </div>
+                
+
+                <input class="regex-input" id="regex-input" placeholder="input e.g. 'jpg', 'torrent'" type="text">
+                <!--
+                <script>
+                    if (document.getElementById("regex").value == "regexMatch") {
+                        document.getElementById("regex-input").placeholder = "Good day!";
+                    }
+                </script>
+                -->
+                
+                <input align="right" class="folder" placeholder="folder: e.g. c/torrents/" type="text"> 
+                <!-- <button type="button" id=chooseFolder>folder</button> -->
+                <p> <!-- empty line after each rule -->
+            </td>
+
+            <td>
+                <span class="nowrap"><input checked class="enabled" type="checkbox">
+                    <label class="enabled-label">Enabled</label>
+                </span>
+            <button class="remove">Remove</button></td>
+        </tr>
+    </table>
+    
+</body>
+</html>
