@@ -1,6 +1,6 @@
 body {
     background-image: url("bg.jpg");
-    width: 250px;
+    width: 400px;
 }
 
 header
@@ -15,20 +15,59 @@ wrapper {
     text-align: right;
 }
 
-button {
-    position: right;
-    top: 50%;
+#buttons{
+    text-align: center;
+    position: center;
+    margin-left: 0%;
+}
+
+#readme {
+    background:none;
+    border:none; 
+    cursor: pointer;
+    color: #0B00BB;
+    font-size: 100%;
+    margin-left: 0%;
+}
+
+#regexes{
+    display:inline-block;
+    width: 100%;
 }
 
 .rulesDescription{
     white-space:pre; /* or pre-wrap if you want wrapping to still work. */
+    width: 45%;
 }
 
-input[type="text"],select {
-  padding: 4px;
-  border: solid 1px #339966;
-  transition: box-shadow 0.3s, border 0.3s;
+input, select {
+    font-size: 11px;
+    width: 45%;
+    border: 1px solid #339966;
+    padding: 0;
+    margin: 0;
+    height: 22px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
+input {
+    text-indent: 4px;
+}
+
+.folder-input {
+    width: 45%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+
+input[type="checkbox"]{
+  width: 20px; 
+  height: 20px;
+}
+
+
 input[type="text"]:focus,select:focus{
   border: solid 1px #0A1E14;
   box-shadow: 0 0 5px 1px #969696;

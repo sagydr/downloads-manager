@@ -12,11 +12,13 @@
     </header>
 
     <table id="rules"></table>
-    <button id="new">New Rule</button>
-    <button id="clearAll">Clear Rules</button>
-    <button id="readme">How to Use</button>
-    <button id="exportRules">Export Rules</button>
-    <button id="importRules">Import Rules</button>
+    <div id="buttons">
+        <button id="new">New Rule</button>
+        <button id="clearAll">Clear Rules</button>
+        <button id="exportRules">Export Rules</button>
+        <button id="importRules">Import Rules</button>
+        <button id="readme" class="readme">instructions</button>
+    </div>
 
     <table hidden="">
         <tr hidden="" id="rule-template">
@@ -26,33 +28,41 @@
             </td>
 
             <td>
-                <span class="rulesDescription">filename rule          file extension rule</span>
-                <div> 
-                <select class="regex" id="regex">
-                    <option selected="selected" value="extension">file extension</option>
-                    <option value="contains">part of filename</option>
-                    <option value="regexMatch">regular expression</option>
-                </select>
+                <span class="rulesDescription"><strong>      filename rule                    file extension rule</strong></span>
+                <div id="regexes"> 
+                    <select class="regex" id="fn-regex">
+                        <option selected="selected" value="none" disabled selected>Select filename rule</option>
+                        <option value="none">none</option>
+                        <option value="match">filename exact match</option>
+                        <option value="contains">part of filename</option>
+                        <option value="regexMatch">regular expression</option>
+                    </select>
+                    
+                    <select class="regex" id="ext-regex">
+                        <option selected="selected" value="none" disabled selected>Select extension rule</option>
+                        <option value="none">none</option>
+                        <option value="match">extension exact match</option>
+                        <option value="contains">part of extension</option>
+                        <option value="regexMatch">regular expression</option>
+                    </select>
                 
                 </div>
                 
-
-                <input class="regex-input" id="regex-input" placeholder="input e.g. 'jpg', 'torrent'" type="text">
-                <!--
-                <script>
-                    if (document.getElementById("regex").value == "regexMatch") {
-                        document.getElementById("regex-input").placeholder = "Good day!";
-                    }
-                </script>
-                -->
-                
-                <input align="right" class="folder" placeholder="folder: e.g. c/torrents/" type="text"> 
+                <div id="regex-inputs">
+                    <input class="regex-input" id="fn-regex-input" placeholder="input e.g. 'forest_gump'" type="text">
+                    <input class="regex-input" id="ext-regex-input" placeholder="input e.g. 'jpg', 'torrent'" type="text">
+                </div>
+               
+                <div id="folder-input">
+                    <input class="folder-input" placeholder="folder: e.g. c/torrents/" type="text"> 
+                </div>
                 <!-- <button type="button" id=chooseFolder>folder</button> -->
                 <p> <!-- empty line after each rule -->
             </td>
 
             <td>
-                <span class="nowrap"><input checked class="enabled" type="checkbox">
+                <span class="nowrap">
+                    <input checked class="enabled" type="checkbox">
                     <label class="enabled-label">Enabled</label>
                 </span>
             <button class="remove">Remove</button></td>
