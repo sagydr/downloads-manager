@@ -3,6 +3,9 @@
 // found in the LICENSE file.
 
 function Rule(data) {
+    console.log("data: " + data);
+    console.log("data: " + JSON.stringify(data));
+
   var rules = document.getElementById('rules');
   this.node = document.getElementById('rule-template').cloneNode(true);
   this.node.id = 'rule' + (Rule.next_id++);
@@ -11,9 +14,12 @@ function Rule(data) {
   this.node.hidden = false;
 
   if (data) {
-    this.getElement('regex').value = data.regex;
-    this.getElement('regex-input').value = data.input;
-    this.getElement('folder').value = data.folder;
+    console.log("data!");
+    this.getElement('fn-select').value = data.fnSelect;
+    this.getElement('ext-select').value = data.extSelect;
+    this.getElement('fn-regex-input').value = data.fnInput;
+    this.getElement('ext-regex-input').value = data.extInput;
+    this.getElement('folder-input').value = data.folder;
     this.getElement('enabled').checked = data.enabled;
   }
 
@@ -22,11 +28,18 @@ function Rule(data) {
 
   //this.getElement('regex').onchange = definePlaceholdersForRule; // storeRules
   //this.getElement('regex').setAttribute('onchange', 'definePlaceholdersForRule');
-  regInpt = this.getElement('regex-input');
-  this.getElement('regex').onchange = function () {setPlaceholders(this, regInpt) };
+  fnRegInpt = this.getElement('fn-regex-input');
+  extRegInpt = this.getElement('ext-regex-input');
+  var node_id = this.node.id;
   
-  this.getElement('regex-input').onkeyup = storeRules;
-  this.getElement('folder').onchange = storeRules;
+  console.log("fnRegInpt el: " + fnRegInpt.value);
+  console.log("extRegInpt el: " + extRegInpt.value);
+  this.getElement('fn-select').onchange = function () {setPlaceholders(this, rules, node_id, "fn-regex-input") };
+  this.getElement('ext-select').onchange = function () {setPlaceholders(this, rules, node_id, "ext-regex-input") };
+  //this.getElement('ext-select').onchange = function () {setPlaceholders(this, extRegInpt) };
+  
+  // this.getElement('regex-input').onkeyup = storeRules;
+  this.getElement('folder-input').onchange = storeRules;
   this.getElement('enabled').onchange = storeRules;
 
   var rule = this;
@@ -58,25 +71,42 @@ Rule.prototype.getElement = function(name) {
   return document.querySelector('#' + this.node.id + ' .' + name);
 }
 
-function setPlaceholders(regSelection, regInpt)
+function setPlaceholders(regSelection, rules, rule_id, inputClass)
 {
-    // console.log("setPlaceholders - "+regSelection.value + " - " + regInpt.value);
-    if (regInpt.value == "")
-    {
-        switch(regSelection.value) {
-            case "contains":
-                regInpt.placeholder = "input e.g. 'tor', 'game',...";
-                break;
-            case "extension":
-                regInpt.placeholder = "input e.g. 'jpg', 'torrent',...";
-                break;
-            case "regexMatch":
-                regInpt.placeholder = "input e.g. .*torrent.*";
-                break;
-            default:
-                regInpt.placeholder = "input";
+    console.log("setPlaceholders - "+regSelection.value + " - " + rules + " - " + rule_id);
+    for (i = 0; i < rules.childElementCount; i++) { 
+        if (rules.children[i].id == rule_id)
+        {
+            var input = rules.children[i].getElementsByClassName(inputClass)[0]
+            if (input.value == "")
+            {
+                switch(regSelection.value) {
+                    case "match":
+                        input.disabled = false;
+                        input.placeholder = "input: e.g. 'myFile', ...";
+                        break;
+                    case "contains":
+                        input.disabled = false;
+                        input.placeholder = "input: e.g. 'jpg', 'torrent',...";
+                        break;
+                    case "regexMatch":
+                        input.disabled = false;
+                        input.placeholder = "input: e.g. .*torrent.*";
+                        break;
+                    case "none":
+                        input.disabled = true;
+                        input.placeholder = "";
+                        break;
+                    default:
+                        input.placeholder = "input";
+                }
+            }
+            else if(regSelection.value == "none")
+                input.disabled = true;
         }
     }
+    
+    
     storeRules();
 }
 
@@ -99,11 +129,14 @@ function loadRules() {
 function storeRules() {
   localStorage.rules = JSON.stringify(Array.prototype.slice.apply(
       document.getElementById('rules').childNodes).map(function(node) {
-    node.rule.render();
-    return {regex: node.rule.getElement('regex').value,
-            input: node.rule.getElement('regex-input').value,
-            folder: node.rule.getElement('folder').value,
-            enabled: node.rule.getElement('enabled').checked};
+      node.rule.render();
+        
+        return {fnSelect: node.rule.getElement("fn-select").value,
+                extSelect: node.rule.getElement("ext-select").value,
+                fnInput: node.rule.getElement("fn-regex-input").value,
+                extInput: node.rule.getElement("ext-regex-input").value,
+                folder: node.rule.getElement('folder-input').value,
+                enabled: node.rule.getElement('enabled').checked};
   }));
 }
 
@@ -123,6 +156,11 @@ function readme()
   
 }
 
+function nextVersion()
+{
+    alert("This feature will be supported in the next version");
+}
+
 /*
 function chooseFolder()
 {
@@ -137,4 +175,6 @@ window.onload = function() {
   document.getElementById('new').onclick = function() {new Rule();};
   document.getElementById('clearAll').onclick = clearAll;
   document.getElementById('readme').onclick = readme;
+  document.getElementById('exportRules').onclick = nextVersion;
+  document.getElementById('importRules').onclick = nextVersion;
 }

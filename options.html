@@ -30,17 +30,15 @@
             <td>
                 <span class="rulesDescription"><strong>      filename rule                    file extension rule</strong></span>
                 <div id="regexes"> 
-                    <select class="regex" id="fn-regex">
-                        <option selected="selected" value="none" disabled selected>Select filename rule</option>
-                        <option value="none">none</option>
+                    <select class="fn-select" id="fn-select">
+                        <option selected="selected" value="none" >none</option>
                         <option value="match">filename exact match</option>
                         <option value="contains">part of filename</option>
                         <option value="regexMatch">regular expression</option>
                     </select>
                     
-                    <select class="regex" id="ext-regex">
-                        <option selected="selected" value="none" disabled selected>Select extension rule</option>
-                        <option value="none">none</option>
+                    <select class="ext-select" id="ext-select">
+                        <option selected="selected" value="none" >none</option>
                         <option value="match">extension exact match</option>
                         <option value="contains">part of extension</option>
                         <option value="regexMatch">regular expression</option>
@@ -49,8 +47,8 @@
                 </div>
                 
                 <div id="regex-inputs">
-                    <input class="regex-input" id="fn-regex-input" placeholder="input e.g. 'forest_gump'" type="text">
-                    <input class="regex-input" id="ext-regex-input" placeholder="input e.g. 'jpg', 'torrent'" type="text">
+                    <input class="fn-regex-input" id="fn-regex-input" type="text" disabled>
+                    <input class="ext-regex-input" id="ext-regex-input" type="text" disabled>
                 </div>
                
                 <div id="folder-input">
