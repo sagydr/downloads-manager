@@ -57,48 +57,35 @@ chrome.downloads.onDeterminingFilename.addListener(function(item, __suggest) {
 
 function parseRules(rules, filename)
 {
-    // alert("comparing " + rules.length + " rules");
+    var filename_and_extension = filename.split('.');
+    var extension = filename_and_extension.pop();
+    var filename_only = filename_and_extension.pop();
+    
     for (i = 0; i < rules.length; i++) { 
+    
         rule = rules[i];
+        alert("rule: "+JSON.stringify(rule));
         
-        if (rule.enabled && (rule.input.length > 0) && (rule.folder.length > 0)) {
-            //alert(JSON.stringify(rule));
+        // rule is enabled, and at least one of the two rule types is set
+        if (rule.enabled) {
             
-            // remove unnecessary "c/" from beginning of folder name
-            if (rule.folder.search(/^[a-z]\//i) > -1)
+            var fnAns = null;
+            var extAns = null;
+            
+            // filename rule type is defined and not empty
+            if ((rule.fnSelect != "none") && (rule.fnInput != ""))
+                fnAns = matchRule(rule.fnSelect, rule.fnInput, filename_only);
+            
+            // extension rule type is defined and not empty
+            if ((rule.extSelect != "none") && (rule.extInput != ""))
+                extAns = matchRule(rule.extSelect, rule.extInput, extension);
+
+            var isMatch = isMatchFound(fnAns, extAns);
+            if (isMatch)
             {
-                rule.folder = rule.folder.substring(2)
-            }
-            switch (rule.regex)
-            {
-                case "extension":
-                    // alert("comparing extension: "+ rule.input + " - " + filename);
-                    if (filename.indexOf(rule.input, filename.length - rule.input.length) !== -1) {
-                        ans = rule.folder + "/" + filename;
-                        // alert("matched extension! retunrning "+ ans);
-                        return ans;
-                    }
-                    break;
-                
-                case "contains":
-                    // alert("matching contains");
-                    if (filename.indexOf(rule.input) !== -1) {
-                        ans = rule.folder + "/" + filename;
-                        // alert("matched contains! returning: "+ans);
-                        return ans;
-                    }
-                    break;
-                    
-                case "regexMatch":
-                    var re = new RegExp(rule.input, "i");
-                    //alert("regexMatch "+re);
-                    if (filename.search(re) > -1)
-                     {
-                        ans = rule.folder + "/" + filename;
-                        // alert("regex match! returning: "+ans);
-                        return ans;
-                     }
-                    break;
+                ans = rule.folder + "/" + filename;
+                alert("matched extension! retunrning "+ ans);
+                return ans;
             }
             
         } // rule.enabled
@@ -110,3 +97,59 @@ function parseRules(rules, filename)
    // reached here means nothing is matched
    return null;
 }
+
+function isMatchFound(fnAns, extAns)
+{
+    if (fnAns != null && extAns != null && fnAns == true && extAns == true)  // both are defined and true
+        return true; 
+    else if (fnAns != null && extAns == null && fnAns == true)  // fnAns is defined and true
+        return true;
+    else if (fnAns == null && extAns != null && extAns == true)  // extAns is defined and true
+        return true;
+     else
+         return false;
+}
+
+function matchRule(selectionType, selectionInput, data)
+{
+    /*
+    selectionType - match, contains, regexMatch
+    selectionInput - the input value from the user
+    data - either the filename or the extension
+    */
+    
+    var selectionInput = selectionInput.toLowerCase();
+    var data = data.toLowerCase();
+    var ans = false;
+    switch (selectionType)
+    {
+        case "match":
+            alert("MATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
+            selectionInput = selectionInput.split('.').join("");  // remove dot (".") from selectionInput.
+            if (selectionInput == data) {
+                alert("match!");
+                ans = true;
+            }
+            break;
+        
+        case "contains":
+            alert("CONTAINS ruletype for selection-type: "+ selectionType + " - data: " + data);
+            selectionInput = selectionInput.split('.').join("");  // remove dot (".") from selectionInput.
+            if (data.indexOf(selectionInput) != -1) {
+                alert("match!");
+                ans = true;
+            }
+            break;
+            
+        case "regexMatch":
+            alert("REGEXTMATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
+            var re = new RegExp(data, "i");
+            //alert("regexMatch "+re);
+            if (data.search(re) > -1) {
+                alert("match!");
+                ans = true;
+             }
+            break;
+    }
+    return ans;
+}    
