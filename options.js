@@ -130,13 +130,14 @@ function storeRules() {
   localStorage.rules = JSON.stringify(Array.prototype.slice.apply(
       document.getElementById('rules').childNodes).map(function(node) {
       node.rule.render();
-        
-        return {fnSelect: node.rule.getElement("fn-select").value,
+      var store_value = {fnSelect: node.rule.getElement("fn-select").value,
                 extSelect: node.rule.getElement("ext-select").value,
                 fnInput: node.rule.getElement("fn-regex-input").value,
                 extInput: node.rule.getElement("ext-regex-input").value,
                 folder: node.rule.getElement('folder-input').value,
                 enabled: node.rule.getElement('enabled').checked};
+      
+      return store_value
   }));
 }
 
@@ -170,9 +171,26 @@ function chooseFolder()
 }
 */
 
+function setDisabled(regSelection, inputClass)
+{
+    var rules = document.getElementById('rules');
+    for (i = 0; i < rules.childElementCount; i++) { 
+       
+        var input = rules.children[i].getElementsByClassName(inputClass)[0]
+        var selectionValue = rules.children[i].getElementsByClassName(regSelection)[0].value;
+        if (selectionValue == "none") {
+            console.log("setting "+rules.children[i].id + " to disable");
+            input.disabled = true;
+        }
+    }
+}
+
 window.onload = function() {
   loadRules();
+  setDisabled("fn-select", "fn-regex-input");
+  setDisabled("ext-select", "ext-regex-input");
   document.getElementById('new').onclick = function() {new Rule();};
+  document.getElementById('save').onclick = storeRules;
   document.getElementById('clearAll').onclick = clearAll;
   document.getElementById('readme').onclick = readme;
   document.getElementById('exportRules').onclick = nextVersion;

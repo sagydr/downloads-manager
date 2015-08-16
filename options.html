@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href="options.css" rel="stylesheet" type="text/css">
     <title>Download Filename Controller</title>
     <script src="options.js"></script>
@@ -13,11 +14,12 @@
 
     <table id="rules"></table>
     <div id="buttons">
-        <button id="new">New Rule</button>
-        <button id="clearAll">Clear Rules</button>
-        <button id="exportRules">Export Rules</button>
-        <button id="importRules">Import Rules</button>
-        <button id="readme" class="readme">instructions</button>
+        <button type="button" class="btn btn-primary" id="new">New Rule</button>
+        <button type="button" id="save" class="btn btn-success">Save Rules</button>
+        <button id="clearAll" type="button" class="btn btn-danger">Clear Rules</button>
+        <button type="button" class="btn btn-primary btn-xs" id="exportRules">Export Rules</button>
+        <button type="button" class="btn btn-primary btn-xs" id="importRules">Import Rules</button>
+        <button type="button" class="btn btn-primary" id="readme">instructions</button>
     </div>
 
     <table hidden="">
@@ -50,8 +52,8 @@
                 </div>
                 
                 <div id="regex-inputs">
-                    <input class="fn-regex-input" id="fn-regex-input" type="text" disabled>
-                    <input class="ext-regex-input" id="ext-regex-input" type="text" disabled>
+                    <input class="fn-regex-input" id="fn-regex-input" type="text">
+                    <input class="ext-regex-input" id="ext-regex-input" type="text">
                 </div>
                
                 <div id="folder-input">
