@@ -1,7 +1,11 @@
 body {
-    background-image: url("bg.jpg");
+    /*background-image: url("bg.jpg");*/
     width: 350px;
+    
+  /*background: -webkit-linear-gradient(90deg, #085078 10%, #85D8CE 90%); /* Chrome 10+, Saf5.1+ */
+    background: -webkit-linear-gradient(90deg, #FFFFFF 10%, #CCFFCC 90%); /* Chrome 10+, Saf5.1+ */
 }
+
 
 header
 {   
@@ -9,6 +13,13 @@ header
   position: center;
   height: 100%;
   margin-bottom: 40px;
+  background: repeating-linear-gradient(
+  45deg,
+  #CCFFCC,
+  #99FF99 10px,
+  #99FFCC 10px,
+  #66FF66 20px
+);
 }
 
 wrapper {
@@ -77,7 +88,7 @@ input[type="checkbox"]{
   width: 25%; /*20px; */
 }
 
-.enabled {
+.enabled, .checkbox {
     height: 13px;
     padding: 0;
     margin:0;
@@ -91,7 +102,6 @@ input[type="checkbox"]{
 .remove {
     height: 15px;
     margin-left: -4px;
-    
 }
 
 input[type="text"]:focus,select:focus{

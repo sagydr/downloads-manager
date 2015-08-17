@@ -182,7 +182,7 @@ function setDisabled(regSelection, inputClass)
         var selectionValue = rules.children[i].getElementsByClassName(regSelection)[0].value;
         if (selectionValue == "none") {
             var input = rules.children[i].getElementsByClassName(inputClass)[0]
-            console.log("setting "+rules.children[i].id + " to disable");
+            //console.log("setting "+rules.children[i].id + " to disable");
             input.disabled = true;
         }
     }

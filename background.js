@@ -1,5 +1,4 @@
 function matches(rule, item) {
-    alert("matches");
   if (rule.matcher == 'js')
     return eval(rule.match_param);
   if (rule.matcher == 'hostname') {
@@ -64,7 +63,7 @@ function parseRules(rules, filename)
     for (i = 0; i < rules.length; i++) { 
     
         rule = rules[i];
-        alert("rule: "+JSON.stringify(rule));
+        // alert("rule: "+JSON.stringify(rule));
         
         // rule is enabled, and at least one of the two rule types is set
         if (rule.enabled) {
@@ -78,21 +77,19 @@ function parseRules(rules, filename)
             
             // extension rule type is defined and not empty
             if ((rule.extSelect != "none") && (rule.extInput != ""))
+                // alert("calling matchRule");
                 extAns = matchRule(rule.extSelect, rule.extInput, extension);
 
             var isMatch = isMatchFound(fnAns, extAns);
-            alert("filename-match: "+fnAns + " - extension-match: "+extAns);
+            // alert("filename-match: "+fnAns + " - extension-match: "+extAns);
             if (isMatch)
             {
                 ans = rule.folder + "/" + filename;
-                alert("matched extension! retunrning "+ ans);
+                // alert("matched extension! retunrning "+ ans);
                 return ans;
             }
             
         } // rule.enabled
-        else {
-            console.log("rule is disabled");
-        }
    } // rules loop
    
    // reached here means nothing is matched
@@ -125,27 +122,28 @@ function matchRule(selectionType, selectionInput, data)
     switch (selectionType)
     {
         case "match":
-            alert("MATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
+            //alert("MATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
             if (selectionInput == data) {
-                alert("match!");
+                alert("MATCH match!");
                 ans = true;
             }
             break;
         
         case "contains":
-            alert("CONTAINS ruletype for selection-type: "+ selectionType + " - data: " + data);
+            // alert("CONTAINS type: "+ selectionType + " - data: " + data);
+            // alert("CONTAINS res: "+ data.indexOf(selectionInput));
             if (data.indexOf(selectionInput) != -1) {
-                alert("match!");
+                alert("CONTAINS match!");
                 ans = true;
             }
             break;
             
         case "regexMatch":
-            alert("REGEXTMATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
-            var re = new RegExp(data, "i");
-            //alert("regexMatch "+re);
+            //alert("REGEXTMATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
+            var re = new RegExp(selectionInput, "i");
+            // alert("regexMatch re is: "+re);
             if (data.search(re) > -1) {
-                alert("match!");
+                alert("REGEXTMATCH match!");
                 ans = true;
              }
             break;

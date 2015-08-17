@@ -16,7 +16,7 @@
     <div id="buttons">
         <button type="button" class="btn btn-primary" id="new">New Rule</button>
         <button type="button" id="save" class="btn btn-success">Save Rules</button>
-        <button id="clearAll" type="button" class="btn btn-danger">Clear Rules</button>
+        <button id="clearAll" type="button" class="btn btn-warning">Clear Rules</button>
         <button type="button" class="btn btn-primary btn-xs" id="exportRules">Export Rules</button>
         <button type="button" class="btn btn-primary btn-xs" id="importRules">Import Rules</button>
         <button type="button" class="btn btn-primary" id="readme" font-size="10%">instructions</button>
@@ -57,19 +57,27 @@
                 </div>
                
                 <div id="folder-input">
-                    <input class="folder-input" placeholder="folder: e.g. c/torrents/" type="text"> 
+                    <input class="folder-input" placeholder="folder: e.g. torrents/" type="text"> 
                 </div>
                 <!-- <button type="button" id=chooseFolder>folder</button> -->
                 <p> <!-- empty line after each rule -->
             </td>
 
             <td>
-                <span class="nowrap">
+                 <!-- <span class="nowrap">
                     <input checked class="enabled" type="checkbox">
                     <label class="enabled-label">Enabled</label>
-                 </span>
+                 </span> -->
+                 
+                 <div class="checkbox">
+                    <label class="enabled-label">
+                      <input checked class="enabled" type="checkbox"> Enabled
+                    </label>
+                  </div>
+                 
                  <div class="remove">
-                    <button class="remove-button">Remove</button>
+                    <!-- <button class="remove-button">Remove</button> -->
+                    <button type="button" class="close remove-button" aria-label="Close"><span aria-hidden="true">remove</span></button>
                  </div>
              </td>
              
