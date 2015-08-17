@@ -59,7 +59,7 @@ function parseRules(rules, filename)
 {
     var filename_and_extension = filename.split('.');
     var extension = filename_and_extension.pop();
-    var filename_only = filename_and_extension.pop();
+    var filename_only = filename_and_extension.slice(0, filename_and_extension.length-1).join(".")
     
     for (i = 0; i < rules.length; i++) { 
     
@@ -81,6 +81,7 @@ function parseRules(rules, filename)
                 extAns = matchRule(rule.extSelect, rule.extInput, extension);
 
             var isMatch = isMatchFound(fnAns, extAns);
+            alert("filename-match: "+fnAns + " - extension-match: "+extAns);
             if (isMatch)
             {
                 ans = rule.folder + "/" + filename;
@@ -125,7 +126,6 @@ function matchRule(selectionType, selectionInput, data)
     {
         case "match":
             alert("MATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
-            selectionInput = selectionInput.split('.').join("");  // remove dot (".") from selectionInput.
             if (selectionInput == data) {
                 alert("match!");
                 ans = true;
@@ -134,7 +134,6 @@ function matchRule(selectionType, selectionInput, data)
         
         case "contains":
             alert("CONTAINS ruletype for selection-type: "+ selectionType + " - data: " + data);
-            selectionInput = selectionInput.split('.').join("");  // remove dot (".") from selectionInput.
             if (data.indexOf(selectionInput) != -1) {
                 alert("match!");
                 ans = true;

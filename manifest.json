@@ -10,14 +10,22 @@
  
  "browser_action": {
     "default_icon": {                    // optional
-    "19": "downloads-42.png",           // optional
-    "38": "downloads-42.png",            // optional
-    "32": "downloads-42.png",
-    "16": "downloads-42.png"
+    "38": "logos/downloads_48.png",            // optional
+    "32": "logos/downloads_32.png",
+    "16": "logos/downloads_32.png",
+    "48": "logos/downloads_48.png",
+    "64": "logos/downloads_64.png",
+    "128": "logos/downloads_128.png"
+
     },
     "default_title": "Your Downloads Organizer",
     "default_popup": "options.html"
   },
+  
+  "icons": {                   
+    "48": "logos/downloads_48.png",
+    "128": "logos/downloads_128.png"
+  },    
  
  "options_page": "options.html",
  "permissions": ["downloads"],
