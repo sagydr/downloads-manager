@@ -7,6 +7,7 @@ function Rule(data) {
     console.log("data: " + JSON.stringify(data));
 
   var rules = document.getElementById('rules');
+  document.getElementById("rulesTitle").style.display = "block";
   this.node = document.getElementById('rule-template').cloneNode(true);
   this.node.id = 'rule' + (Rule.next_id++);
   this.node.rule = this;
@@ -147,6 +148,7 @@ function storeRules() {
 function clearAll()
 {
   console.log("clearing");
+  document.getElementById("rulesTitle").style.display = "none";
   localStorage.rules = JSON.stringify([]);
   //loadRules();
   location.reload();
@@ -176,7 +178,7 @@ function chooseFolder()
 
 function setDisabled(regSelection, inputClass)
 {
-    var rules = document.getElementById('rules');
+    var rules = document.getElementById('rules');    
     for (i = 0; i < rules.childElementCount; i++) { 
        
         var selectionValue = rules.children[i].getElementsByClassName(regSelection)[0].value;

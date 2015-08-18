@@ -3,7 +3,8 @@ body {
     width: 350px;
     
   /*background: -webkit-linear-gradient(90deg, #085078 10%, #85D8CE 90%); /* Chrome 10+, Saf5.1+ */
-    background: -webkit-linear-gradient(90deg, #FFFFFF 10%, #CCFFCC 90%); /* Chrome 10+, Saf5.1+ */
+  /*  background: -webkit-linear-gradient(90deg, #FFFFFF 10%, #CCFFCC 90%); /* Chrome 10+, Saf5.1+ */
+   background: -webkit-linear-gradient(90deg, #9AD1F6 10%, #B9E1FC 90%); /* Chrome 10+, Saf5.1+ */
 }
 
 
@@ -13,13 +14,23 @@ header
   position: center;
   height: 100%;
   margin-bottom: 40px;
+  /*
   background: repeating-linear-gradient(
   45deg,
   #CCFFCC,
   #99FF99 10px,
   #99FFCC 10px,
   #66FF66 20px
-);
+  
+    ); */
+   background-color: #000000;
+   color: #D0F8FF;
+    text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+             0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+             0 0 40px #A5F1FF;
+    
+    font-size: 22px;
+
 }
 
 wrapper {
@@ -30,8 +41,10 @@ wrapper {
     text-align: center;
     position: center;
     margin-left: 0%;
+    margin: 6px;
 }
 
+/*
 #readme {
     background:none;
     border:none; 
@@ -40,6 +53,7 @@ wrapper {
     font-size: 100%;
     margin-left: 0%;
 }
+*/
 
 #regexes{
     display:inline-block;
@@ -68,12 +82,13 @@ input {
 
 .rulesTitle {
     /*border: 1px solid #339966;*/
-    padding: 0;
-    margin: 0;
+
+    font-size: 12px;
+    left:17%;
+    padding: 0%;
+    position: relative;
     width: 90%;
-    height: 100% /*18px;*/
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -97,6 +112,7 @@ input[type="checkbox"]{
     top: -1px;
     margin-left: -5px;
     *overflow: hidden;
+    text-shadow: 2px 2px 2px #CCCCCC;
 }
 
 .remove {

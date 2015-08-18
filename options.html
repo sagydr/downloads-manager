@@ -5,48 +5,56 @@
     <link href="options.css" rel="stylesheet" type="text/css">
     <title>Download Filename Controller</title>
     <script src="options.js"></script>
+    
 </head>
 
 <body>
     <header>
-        <img id="logo" src="logos/downloads_128.png" srcset="logos/downloads_128.png 2x">
+        Downloads <img id="logo" src="logos/downloads_128.png" srcset="logos/downloads_128.png 2x"> Manager
     </header>
+    
+    <div id="rulesTitle" class="rulesTitle" style="display: none;">
+        <span class="rulesDescription"><strong>filename rule       file extension rule</strong></span>
+    </div>
 
     <table id="rules"></table>
     <div id="buttons">
-        <button type="button" class="btn btn-primary" id="new">New Rule</button>
-        <button type="button" id="save" class="btn btn-success">Save Rules</button>
-        <button id="clearAll" type="button" class="btn btn-warning">Clear Rules</button>
+        <button type="button" class="btn btn-primary btn-xs" id="new">New Rule</button>
+        <button type="button" id="save" class="btn btn-success btn-xs">Save Rules</button>
+        <button id="clearAll" type="button" class="btn btn-warning btn-xs">Clear Rules</button>
+    </div>
+    <div id="buttons">
         <button type="button" class="btn btn-primary btn-xs" id="exportRules">Export Rules</button>
         <button type="button" class="btn btn-primary btn-xs" id="importRules">Import Rules</button>
-        <button type="button" class="btn btn-primary" id="readme" font-size="10%">instructions</button>
+        <button type="button" class="btn btn-primary btn-xs btn-default" id="readme" font-size="10%">instructions</button>
     </div>
 
+
     <table hidden="">
+
         <tr hidden="" id="rule-template">
+              
             <td class="nowrap">
                 <button class="move-up">&uarr;</button>
                 <button class="move-down">&darr;</button>
             </td>
-
+      
             <td>
-                <div class="rulesTitle">
-                    <span class="rulesDescription"><strong>   filename rule       file extension rule</strong></span>
-                </div>
+
                 
                 <div id="regexes"> 
                     <select class="fn-select" id="fn-select">
                         <option selected="selected" value="none" >none</option>
                         <option value="match">filename exact match</option>
                         <option value="contains">part of filename</option>
-                        <option value="regexMatch">regular expression</option>
+                        <option value="regexMatch">regular expression (advanced)</option>
                     </select>
                     
                     <select class="ext-select" id="ext-select">
                         <option selected="selected" value="none" >none</option>
                         <option value="match">extension exact match</option>
                         <option value="contains">part of extension</option>
-                        <option value="regexMatch">regular expression</option>
+                        <option value="regexMatch">regular expression (advanced)</option>
                     </select>
                 
                 </div>
@@ -58,6 +66,9 @@
                
                 <div id="folder-input">
                     <input class="folder-input" placeholder="folder: e.g. torrents/" type="text"> 
+                </div>
+                <div>
+                    ------------------------------------------------ 
                 </div>
                 <!-- <button type="button" id=chooseFolder>folder</button> -->
                 <p> <!-- empty line after each rule -->
