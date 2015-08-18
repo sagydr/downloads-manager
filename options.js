@@ -143,6 +143,7 @@ function storeRules() {
       
       return store_value
   }));
+  
 }
 
 function clearAll()

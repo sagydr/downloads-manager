@@ -30,17 +30,74 @@ the value in the
 </div>
 <img id="changeDownloadsFolder" src="changeDownloadsFolder.png" width="450" height="120" alt="Change Default Downloads Folder" title="Change Default Downloads Folder">
 
+<p><a href="#setRulesTitle">set rules</a>   ,   <a href="#examples">examples</a>  ,  <a href="#qna">Q &amp; A</a></p>
+
 <p>
-<div id="newRule">Set Rules:
-    <ol>
-        <li>Click the <strong>New Rule</strong> button 
+<h1 id="setRulesTitle">Set Rules:</h1>
+<div id="newRule">
+    <ol class="setRulesList" display="inline-block">
+        <li class="setRulesList2">Click the <strong>New Rule</strong> button 
           <img id="newRule" class="tutorialImages" src="tutorial/newRule.png"  height="80" alt="New Rule" title="New Rule">
           <br><br><br><br>
-        <li>Select <strong>Rule Type</strong>
-          <img id="ruleType" class="tutorialImages" src="tutorial/ruleType.png"  height="120" alt="rule type" title="Rule Type">
-
-         
+        <li display="inline-block" class="setRulesList2">Select <strong>Filename Rule Type</strong> and/or <strong>Extension Rule Type</strong>
+          <img id="ruleType" class="tutorialImages" src="tutorial/selectRule2.png"  height="100" alt="rule type" title="Rule Type">
+          <ul>
+            <li><strong>none</strong> - don't apply any rule
+            <li><strong>exact match</strong> - input must match exactly the filename or extension.
+            <li><strong>part of</strong> - input needs to be a part of the filename or extension.<br> e.g. "tor" is part of the extension .torrent.<br>
+                "science" is part of the filename "my_science_book".
+            <li><strong>regular expression</strong> - advanced usage. If you have knowledge of regular expressions you can define them here and they will be applied 
+                to the filename or extension.<br>e.g ".*tor.*[0-9].*" is a valid regular expression input.
+           </ul>
+           <br>
+        <li display="inline-block" class="setRulesList2">Fill the <strong>Input</strong> box&nbsp;&nbsp;
+            <img id="ruleType" class="tutorialImages" src="tutorial/input.png" alt="rule type" title="Rule Type">
+            <br>
+            <br>
+            <br>
+        <li display="inline-block" class="setRulesList2">Fill the <strong>Folder</strong> box
+            <img id="ruleType" class="tutorialImages" src="tutorial/folder.png" alt="rule type" title="Rule Type">
+            <br>
+            <br>
+            <br>
+         <li display="inline-block" class="setRulesList2"><strong>Save</strong>
+            <img id="ruleType" class="tutorialImages" src="tutorial/save.png" alt="rule type" title="Rule Type">
+            
+        <br>
+            <br>
+            <br>
+            <p>
     </ol>
+    
+    <h1 id="examples">Examples</h1>
+    <ol class="examplesList">
+        <li display="inline-block" class="examplesList2"><img id="ruleType" class="exampleImages" src="tutorial/example1.png" alt="rule type" title="Rule Type">
+            save all <strong>mp4</strong> files containing the word <strong>dexter</strong> into <strong>videos/tv/dexter</strong> folder.
+            
+         <br>
+         <br>
+        <li display="inline-block" class="examplesList2"><img id="ruleType" class="exampleImages" src="tutorial/example2.png" alt="rule type" title="Rule Type">
+            save all <strong>torrent</strong> files into <strong>downloads/torrents</strong> folder.
+            
+        <br>
+        <br>
+        <li display="inline-block" class="examplesList2"><img id="ruleType" class="exampleImages" src="tutorial/example3.png" alt="rule type" title="Rule Type">
+            save all files containing the word <strong>McDonalds</strong> into <strong>MyNewsLetters</strong> folder.
+       
+       <br>
+       <br>
+        <li display="inline-block" class="examplesList2"><img id="ruleType" class="exampleImages" src="tutorial/example4.png" alt="rule type" title="Rule Type">
+            save all files containing either word <strong>mp4, mov, mkv, avi</strong> into <strong>videos/general</strong> folder.
+    </ol>
+    
+    <h1 id="qna">Q &amp; A</h1>
+    <strong>Q:</strong> are rules case-sensitive?
+    <br>
+    <strong>A:</strong> NO! All rules are case-INsensitive.
+    <br>
+    <br>
+    <br>
+    
 </div>
 
 </body>

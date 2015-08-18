@@ -120,7 +120,24 @@ input[type="checkbox"]{
     margin-left: -4px;
 }
 
+/*
 input[type="text"]:focus,select:focus{
   border: solid 1px #0A1E14;
   box-shadow: 0 0 5px 1px #969696;
 }
+*/
+
+/*
+input[type="text"] ,select{
+    -webkit-appearance: textfield;
+    background:url('icons.png') #fff no-repeat 5px -601px;
+    outline: 0px rgba(0,0,0,0) solid;
+    transition: outline-color .3s
+}
+input[type="text"]:focus,select:focus, #save{
+    z-index:1000;
+    position:relative;
+    border:1px solid #f60;
+    outline: 5000px rgba(0,0,0,.6) solid ;
+}
+*/
