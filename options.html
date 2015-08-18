@@ -2,9 +2,10 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="options.css" rel="stylesheet" type="text/css">
-    <link href="bootstrap-social.css" rel="stylesheet" type="text/css">
-    <link href="font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="social-buttons.css" rel="stylesheet" type="text/css">
+    
     <title>Download Filename Controller</title>
     <script src="options.js"></script>
     
@@ -12,6 +13,7 @@
 
 <body>
     <header>
+
         Downloads <img id="logo" src="logos/downloads_128.png" srcset="logos/downloads_128.png 2x"> Manager
     </header>
     
@@ -22,18 +24,21 @@
     <table id="rules"></table>
     <div id="buttons">
         <button type="button" class="btn btn-primary btn-xs" id="new">New Rule</button>
-        <button type="button" id="save" class="btn btn-success btn-xs">Save Rules</button>
+        <button type="button" id="save" class="btn btn-success btn-xs">
+            <i id="savedcheck" class="fa fa-check-circle"></i>  Save Rules</button>
         <button id="clearAll" type="button" class="btn btn-warning btn-xs">Clear Rules</button>
     </div>
     <div id="buttons">
         <button type="button" class="btn btn-primary btn-xs" id="exportRules">Export Rules</button>
         <button type="button" class="btn btn-primary btn-xs" id="importRules">Import Rules</button>
-        <button type="button" class="btn btn-primary btn-xs btn-default" id="readme" font-size="10%">instructions</button>
-         
-        <a class="btn btn-social-icon btn-twitter">
-            <i class="fa fa-twitter"></i>
-        </a>
+        <!--<button type="button" class="btn btn-primary btn-xs btn-default" id="readme" font-size="10%">instructions</button>        -->
     </div>
+    <div id="buttons">
+        <button id="readme">
+            <i id="readme" class="fa fa-sliders"> | instructions</i>
+        </button>
+    </div>
+
 
 
     <table hidden="">

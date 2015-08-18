@@ -130,6 +130,13 @@ function loadRules() {
   }
 }
 
+function checkAndStoreRules() 
+{
+    storeRules();
+    document.getElementById('savedcheck').style.display="inline";
+    setTimeout(function(){ document.getElementById('savedcheck').style.display="none"; }, 1000);
+}
+
 function storeRules() {
   localStorage.rules = JSON.stringify(Array.prototype.slice.apply(
       document.getElementById('rules').childNodes).map(function(node) {
@@ -142,7 +149,7 @@ function storeRules() {
                 enabled: node.rule.getElement('enabled').checked};
       
       return store_value
-  }));
+  }));  
   
 }
 
@@ -193,10 +200,11 @@ function setDisabled(regSelection, inputClass)
 
 window.onload = function() {
   loadRules();
+  document.getElementById('savedcheck').style.display="none";
   setDisabled("fn-select", "fn-regex-input");
   setDisabled("ext-select", "ext-regex-input");
   document.getElementById('new').onclick = function() {new Rule();};
-  document.getElementById('save').onclick = storeRules;
+  document.getElementById('save').onclick = checkAndStoreRules;
   document.getElementById('clearAll').onclick = clearAll;
   document.getElementById('readme').onclick = readme;
   document.getElementById('exportRules').onclick = nextVersion;
