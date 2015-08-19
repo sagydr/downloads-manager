@@ -2,19 +2,32 @@
 <html lang="en">
 <head>
     <link href="readme.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title>My Readme Page</title>
     <script type="text/javascript" src="readme.js"></script>
 </head>
 
 <body>
+
+<div id="title">
+    <b>
+        <h1 id="smallHeadline">By <i class="accent">Sagy Drucker</i></h1>
+        <h2 id="largeHeadline">Downloads Manager</h2>
+        <br><br>
+    </b>
+</div>
+
 <div id="intro">
-Hello. Tired of maneuvering between the different download folders? (torrents, pictures, movies, ...)<br>
-<b>This is the best extension to organize your downloads into folders.</b><br><br>
-This is not an easy task. Due to security reasons you need to assist with the following:<br>
-Set your default download location to be your main folder, usually <b>c:\</b> or <b>/Users/&lt;username&gt;/</b> (for mac) by changing
-the value in the
-<button class="settings" id="settings" name="settings">settings</button> (Advanced -> Downloads):
+    This is the best extension to organize your downloads into different folders.<br><br>
+
+    This is not an easy task. You need to understand one thing:<br>
+    Due to security reasons Javascript doesn't allow access to <i class="accent">ANY</i> folder on your computer. So my suggestions are either:<br>
+    
+
+    &nbsp;&nbsp;&nbsp;&nbsp;1. <b>Set your default download location to be your main folder</b>, usually <b>c:\</b> or /Users/&lt;username&gt;/ (for mac) by changing
+    the value in the
+    <button class="settings" id="settings" name="settings">settings</button> (Advanced -> Downloads):
 </div>
 
 <div id="setDefaultDownloadsFolder">
@@ -30,7 +43,14 @@ the value in the
 </div>
 <img id="changeDownloadsFolder" src="changeDownloadsFolder.png" width="450" height="120" alt="Change Default Downloads Folder" title="Change Default Downloads Folder">
 
-<p><a href="#setRulesTitle">set rules</a>   ,   <a href="#examples">examples</a>  ,  <a href="#qna">Q &amp; A</a></p>
+<div id="intro">
+&nbsp;&nbsp;&nbsp;&nbsp;2. Place all your required download folders as <b>sub-diretories of the main download folder</b>.
+</div>
+
+<p><b><a class="four" href="#setRulesTitle">set rules</a></b></p>
+<p><b><a class="four" href="#examples">examples</a></b></p>
+<p><b><a class="four" href="#qna">Q &amp; A</a></b></p>
+<p><b><a class="four" href="#contactMe">contact me</a></b></p>
 
 <p>
 <h1 id="setRulesTitle">Set Rules:</h1>
@@ -95,6 +115,13 @@ the value in the
     <br>
     <strong>A:</strong> NO! All rules are case-INsensitive.
     <br>
+    <br>
+    <br>
+    
+     <h1 id="contactMe">Contact Me</h1>
+     <i id="readme" class="fa fa-facebook-official fa-2x"> | "Sagy Drucker"</i><br>
+     <i id="readme" class="fa fa-envelope fa-2x"> | sagysrael@hotmail.com</i><br>
+    
     <br>
     <br>
     

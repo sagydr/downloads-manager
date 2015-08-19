@@ -134,7 +134,7 @@ input[type="text"] ,select{
     outline: 0px rgba(0,0,0,0) solid;
     transition: outline-color .3s
 }
-input[type="text"]:focus,select:focus, #save{
+input[type="text"]:focus,select:focus, #new{
     z-index:1000;
     position:relative;
     border:1px solid #f60;

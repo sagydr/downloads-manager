@@ -1,6 +1,6 @@
 {
- "name": "Download Filename Controller",
- "description": "Download Filename Controller",
+ "name": "Downloads Manager",
+ "description": "Downloads Manager",
  "version": "0.1",
  
  "background": {
