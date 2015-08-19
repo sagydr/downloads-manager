@@ -59,6 +59,9 @@ function parseRules(rules, filename)
             if ((rule.extSelect != "none") && (rule.extInput != ""))
                 // alert("calling matchRule");
                 extAns = matchRule(rule.extSelect, rule.extInput, extension);
+            else if (rule.extSelect.substring(0,3) == "any")
+                // on "any" rule i ignore the input whatsoever.
+                extAns = matchRule(rule.extSelect, rule.extInput, extension);
 
             var isMatch = isMatchFound(fnAns, extAns, rule.andOr);
             // alert("filename-match: "+fnAns + " - extension-match: "+extAns);

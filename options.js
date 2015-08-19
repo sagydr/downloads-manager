@@ -209,6 +209,10 @@ function setDisabledAndPlaceholders(regSelection, inputClass)
         var selectionElement = rule.getElementsByClassName(regSelection)[0];
         var inputElement = rule.getElementsByClassName(inputClass)[0];
         
+        // on "any" selection, always empty the input to show the placeholder.
+        if (selectionElement.value.substring(0,3) == "any")
+            inputElement.value = "";
+        
         var selectedIndex = selectionElement.selectedIndex;
         var placeholder = selectionElement[selectedIndex].getAttribute("placeholder");
         inputElement.placeholder = placeholder;
