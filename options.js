@@ -17,6 +17,7 @@ function Rule(data) {
   if (data) {
     console.log("data!");
     this.getElement('fn-select').value = data.fnSelect;
+    this.getElement('andOr').value = data.andOr;
     this.getElement('ext-select').value = data.extSelect;
     this.getElement('fn-regex-input').value = data.fnInput;
     this.getElement('ext-regex-input').value = data.extInput;
@@ -35,9 +36,13 @@ function Rule(data) {
   
   console.log("fnRegInpt el: " + fnRegInpt.value);
   console.log("extRegInpt el: " + extRegInpt.value);
-  this.getElement('fn-select').onchange = function () {setPlaceholders(this, rules, node_id, "fn-regex-input") };
-  this.getElement('ext-select').onchange = function () {setPlaceholders(this, rules, node_id, "ext-regex-input") };
-  //this.getElement('ext-select').onchange = function () {setPlaceholders(this, extRegInpt) };
+  
+  //this.getElement('fn-select').onchange = function () {setPlaceholders(this, rules, node_id, "fn-regex-input") };
+  this.getElement('fn-select').onchange = function () {setDisabledAndPlaceholders(this.className, "fn-regex-input") };
+  
+  //this.getElement('ext-select').onchange = function () {setPlaceholders(this, rules, node_id, "ext-regex-input") };
+  this.getElement('ext-select').onchange = function () {setDisabledAndPlaceholders(this.className, "ext-regex-input") };
+
   
   // this.getElement('regex-input').onkeyup = storeRules;
   this.getElement('folder-input').onchange = storeRules;
@@ -66,8 +71,8 @@ function Rule(data) {
     storeRules();
   };
   
-  setDisabled("fn-select", "fn-regex-input");
-  setDisabled("ext-select", "ext-regex-input");
+  setDisabledAndPlaceholders("fn-select", "fn-regex-input");
+  setDisabledAndPlaceholders("ext-select", "ext-regex-input");
   storeRules();
 }
 
@@ -75,6 +80,7 @@ Rule.prototype.getElement = function(name) {
   return document.querySelector('#' + this.node.id + ' .' + name);
 }
 
+/*
 function setPlaceholders(regSelection, rules, rule_id, inputClass)
 {
     console.log("setPlaceholders - "+regSelection.value + " - " + rules + " - " + rule_id);
@@ -101,6 +107,12 @@ function setPlaceholders(regSelection, rules, rule_id, inputClass)
                         input.disabled = true;
                         input.placeholder = "";
                         break;
+                    case "anyVideo":
+                    case "anyAudio":
+                    case "anyImage":
+                        input.disabled = true;
+                        input.placeholder = "pre-defined query";
+                        break;
                     default:
                         input.placeholder = "input";
                 }
@@ -113,6 +125,7 @@ function setPlaceholders(regSelection, rules, rule_id, inputClass)
     
     storeRules();
 }
+*/
 
 Rule.prototype.render = function() {
   this.getElement('move-up').disabled = !this.node.previousSibling;
@@ -142,6 +155,7 @@ function storeRules() {
       document.getElementById('rules').childNodes).map(function(node) {
       node.rule.render();
       var store_value = {fnSelect: node.rule.getElement("fn-select").value,
+                andOr: node.rule.getElement("andOr").value,
                 extSelect: node.rule.getElement("ext-select").value,
                 fnInput: node.rule.getElement("fn-regex-input").value,
                 extInput: node.rule.getElement("ext-regex-input").value,
@@ -184,25 +198,40 @@ function chooseFolder()
 }
 */
 
-function setDisabled(regSelection, inputClass)
+
+function setDisabledAndPlaceholders(regSelection, inputClass)
 {
+    console.log("regSelection: "+regSelection + " - inputClass: " + inputClass);
+    
     var rules = document.getElementById('rules');    
     for (i = 0; i < rules.childElementCount; i++) { 
-       
-        var selectionValue = rules.children[i].getElementsByClassName(regSelection)[0].value;
-        if (selectionValue == "none") {
+        var rule = rules.children[i];
+        var selectionElement = rule.getElementsByClassName(regSelection)[0];
+        var inputElement = rule.getElementsByClassName(inputClass)[0];
+        
+        var selectedIndex = selectionElement.selectedIndex;
+        var placeholder = selectionElement[selectedIndex].getAttribute("placeholder");
+        inputElement.placeholder = placeholder;
+        var inputDisabled = selectionElement[selectedIndex].getAttribute("inputDisabled");
+        inputElement.disabled = inputDisabled;
+        
+        /*
+        if (selectionValue == "none" || selectionValue == "anyVideo" || selectionValue == "anyAudio") {
+            
             var input = rules.children[i].getElementsByClassName(inputClass)[0]
             //console.log("setting "+rules.children[i].id + " to disable");
+            rules.children[i].getElementsByClassName(inputClass)[0].placeholder = rules.children[i].getElementsByClassName(regSelection)[0].placeholder
             input.disabled = true;
         }
+        */
     }
 }
 
 window.onload = function() {
   loadRules();
   document.getElementById('savedcheck').style.display="none";
-  setDisabled("fn-select", "fn-regex-input");
-  setDisabled("ext-select", "ext-regex-input");
+  setDisabledAndPlaceholders("fn-select", "fn-regex-input");
+  setDisabledAndPlaceholders("ext-select", "ext-regex-input");
   document.getElementById('new').onclick = function() {new Rule();};
   document.getElementById('save').onclick = checkAndStoreRules;
   document.getElementById('clearAll').onclick = clearAll;

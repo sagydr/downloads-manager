@@ -1,6 +1,6 @@
 body {
     /*background-image: url("bg.jpg");*/
-    width: 350px;
+    width: 355px;
     
   /*background: -webkit-linear-gradient(90deg, #085078 10%, #85D8CE 90%); /* Chrome 10+, Saf5.1+ */
   /*  background: -webkit-linear-gradient(90deg, #FFFFFF 10%, #CCFFCC 90%); /* Chrome 10+, Saf5.1+ */
@@ -58,6 +58,7 @@ wrapper {
 #regexes{
     display:inline-block;
     width: 100%;
+    float:left;
 }
 
 .rulesDescription{
@@ -67,7 +68,7 @@ wrapper {
 
 input, select {
     font-size: 10px;
-    width: 45%;
+    width: 39%;
     border: 1px solid #339966;
     padding: 0;
     margin: 0;
@@ -78,6 +79,18 @@ input, select {
 }
 input {
     text-indent: 4px;
+}
+#andOr{
+    font-size: 9px;
+    width: 16%;
+    height: 14px;
+    position: relative;
+}
+
+#andOr2{
+    font-size: 9px;
+    width: 16%;
+    height: 14px;
 }
 
 .rulesTitle {
@@ -118,6 +131,10 @@ input[type="checkbox"]{
 .remove {
     height: 15px;
     margin-left: -4px;
+}
+
+input[type="text"]:disabled {
+    background: #cccccc;
 }
 
 /*

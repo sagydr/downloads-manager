@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="options.css" rel="stylesheet" type="text/css">
     <link href="social-buttons.css" rel="stylesheet" type="text/css">
-    
     <title>Download Filename Controller</title>
     <script src="options.js"></script>
     
@@ -18,7 +17,7 @@
     </header>
     
     <div id="rulesTitle" class="rulesTitle" style="display: none;">
-        <span class="rulesDescription"><strong>filename rule       file extension rule</strong></span>
+        <span class="rulesDescription"><strong>filename rule                file extension rule</strong></span>
     </div>
 
     <table id="rules"></table>
@@ -55,26 +54,36 @@
                 
                 <div id="regexes"> 
                     <select class="fn-select" id="fn-select">
-                        <option selected="selected" value="none" >none</option>
-                        <option value="match">filename exact match</option>
-                        <option value="contains">part of filename</option>
-                        <option value="regexMatch">regular expression (advanced)</option>
+                        <option selected="selected" value="none" placeholder="" inputDisabled="inputDisabled">none</option>
+                        <option value="match" placeholder="e.g. 'myFile'">filename exact match</option>
+                        <option value="contains" placeholder="e.g. work_">part of filename</option>
+                        <option value="regexMatch" placeholder="e.g .*[0-9]{6}*">regular expression (advanced)</option>
+                    </select>
+                    
+                    <select class="andOr" id="andOr">
+                        <option selected="selected" value="or">or</option>
+                        <option value="and">and</option>
                     </select>
                     
                     <select class="ext-select" id="ext-select">
-                        <option selected="selected" value="none" >none</option>
-                        <option value="match">extension exact match</option>
-                        <option value="contains">part of extension</option>
-                        <option value="regexMatch">regular expression (advanced)</option>
+                        <option selected="selected" value="none" placeholder="" inputDisabled="inputDisabled">none</option>
+                        <option value="anyVideo" placeholder="any video format" inputDisabled="inputDisabled">any video format</option>
+                        <option value="anyAudio" placeholder="any audio format" inputDisabled="inputDisabled">any audio format</option>
+                        <option value="anyImage" placeholder="any image format" inputDisabled="inputDisabled">any image format</option>
+                        <option value="none" disabled>----- other ------</option>
+                        <option value="match" placeholder="e.g. 'jpg'">extension exact match</option>
+                        <option value="contains" placeholder="e.g 'mp'">part of extension</option>
+                        <option value="regexMatch" placeholder="e.g .*torrent.*">regular expression (advanced)</option>
                     </select>
                 
                 </div>
                 
                 <div id="regex-inputs">
                     <input class="fn-regex-input" id="fn-regex-input" type="text">
+                    <input class="andOr2" id="andOr2" style="visibility: hidden">
                     <input class="ext-regex-input" id="ext-regex-input" type="text">
                 </div>
-               
+
                 <div id="folder-input">
                     <input class="folder-input" placeholder="folder: e.g. torrents/" type="text"> 
                 </div>

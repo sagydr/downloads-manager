@@ -43,7 +43,7 @@ function parseRules(rules, filename)
     for (i = 0; i < rules.length; i++) { 
     
         rule = rules[i];
-        // alert("rule: "+JSON.stringify(rule));
+        alert("rule: "+JSON.stringify(rule));
         
         // rule is enabled, and at least one of the two rule types is set
         if (rule.enabled) {
@@ -60,7 +60,7 @@ function parseRules(rules, filename)
                 // alert("calling matchRule");
                 extAns = matchRule(rule.extSelect, rule.extInput, extension);
 
-            var isMatch = isMatchFound(fnAns, extAns);
+            var isMatch = isMatchFound(fnAns, extAns, rule.andOr);
             // alert("filename-match: "+fnAns + " - extension-match: "+extAns);
             if (isMatch)
             {
@@ -76,16 +76,42 @@ function parseRules(rules, filename)
    return null;
 }
 
-function isMatchFound(fnAns, extAns)
+function isMatchFound(fnAns, extAns, andOr)
 {
-    if (fnAns != null && extAns != null && fnAns == true && extAns == true)  // both are defined and true
-        return true; 
-    else if (fnAns != null && extAns == null && fnAns == true)  // fnAns is defined and true
-        return true;
-    else if (fnAns == null && extAns != null && extAns == true)  // extAns is defined and true
-        return true;
-     else
-         return false;
+    var ans = false;
+    if (andOr == "or")
+    {
+        if (fnAns == true || extAns == true)
+            ans = true;
+    }
+    else { // and
+        if (fnAns != null && extAns != null && fnAns == true && extAns == true)  // both are defined and true
+            ans = true; 
+        else if (fnAns != null && extAns == null && fnAns == true)  // fnAns is true - extAns is none
+            ans = true;
+        else if (fnAns == null && extAns != null && extAns == true)  // extAns is true - fnAns is none
+            ans = true;
+         else
+             ans = false;
+    }
+    
+    alert( fnAns + "  " + andOr + "  " + extAns + "        returning: " + ans);
+    return ans;
+    
+    
+}
+
+function performRegexMatch(regexString, data)
+{
+    /*because matchRule has a few regex options, this is a generic method to run regex match and return true or false.*/
+    var ans = false;
+    var re = new RegExp(regexString, "i");
+    alert("performing regex-match-query for re: "+re);
+    if (data.search(re) > -1) {
+        alert("REGEXTMATCH match!");
+        ans = true;
+     }
+    return ans;
 }
 
 function matchRule(selectionType, selectionInput, data)
@@ -119,13 +145,22 @@ function matchRule(selectionType, selectionInput, data)
             break;
             
         case "regexMatch":
-            //alert("REGEXTMATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
-            var re = new RegExp(selectionInput, "i");
-            // alert("regexMatch re is: "+re);
-            if (data.search(re) > -1) {
-                alert("REGEXTMATCH match!");
-                ans = true;
-             }
+            ans = performRegexMatch(selectionInput, data);
+            break;
+            
+        case "anyVideo":
+            videoRegex = ".*3g2|3gp|3gpp|asf|avi|divx|f4v|flv|h264|ifo|m2ts|m4v|mkv|mod|mov|mp4|mpeg|mpg|mswmm|mts|mxf|ogv|rm|swf|ts|vep|vob|webm|wlmp|wmv.*";
+            ans = performRegexMatch(videoRegex, data);
+            break;
+            
+        case "anyAudio":
+            regex = ".*3ga|aac|aif|aiff|amr|au|aup|caf|flac|gsm|kar|m4a|m4p|m4r|mid|midi|mmf|mp2|mp3|mpga|ogg|oma|opus|qcp|ra|ram|wav|wma|xspf.*";
+            ans = performRegexMatch(regex, data);
+            break;
+            
+        case "anyImage":
+            regex = ".*arw|bmp|cr2|crw|dcm|djvu|dmg|dng|fpx|gif|ico|jp2|jpeg|jpg|nef|orf|pcd|pcx|pict|png|psd|sfw|tga|tif|tiff|webp|xcf.*";
+            ans = performRegexMatch(regex, data);
             break;
     }
     return ans;
