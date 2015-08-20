@@ -33,6 +33,12 @@ header
 
 }
 
+#version {
+    font-size: 12px;
+    text-align: center;
+  position: center;
+}
+
 wrapper {
     text-align: right;
 }

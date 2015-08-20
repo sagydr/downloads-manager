@@ -50,10 +50,6 @@ button.settings {
 	font-weight: bold;
 }
 
-a.four:hover{    
-    font-family:monospace;
- }
-
 #newRule {
     font-size: 150%;
  
@@ -105,3 +101,34 @@ a.four:hover{
     position: relative;
 }
 
+.hrefButton {
+	font: bold 13px "Helvetica Neue", Helvetica, Arial, clean, sans-serif !important;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25), -2px 0 1px rgba(0,0,0,0.25);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+	display: inline-block;
+	color: white;
+	padding: 5px 10px 5px;
+	white-space: nowrap;
+	text-decoration: none;
+	cursor: pointer;
+	background: #A9014B url(button_overlay.png) repeat-x scroll 0 0;
+	border-style: none;
+	text-align: center;
+	overflow: visible;
+}
+ 
+.hrefButton:hover,
+.hrefButton:focus {
+	background-position: 0 -50px;
+	color: #ABE2F5;
+}
+ 
+.hrefButton:active {
+	background-position: 0 -100px;
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.7);
+	-webkit-box-shadow: none;
+}

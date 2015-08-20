@@ -186,7 +186,13 @@ function setDisabledAndPlaceholders(regSelection, inputClass)
     }
 }
 
+function updateVersion() {
+    var version = chrome.app.getDetails().version;
+    document.getElementById("version").innerHTML = "version " + version;
+}
+
 window.onload = function() {
+  updateVersion();
   loadRules();
   document.getElementById('savedcheck').style.display="none";
   setDisabledAndPlaceholders("fn-select", "fn-regex-input");
