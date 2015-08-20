@@ -3,8 +3,7 @@
 // found in the LICENSE file.
 
 function Rule(data) {
-    console.log("data: " + data);
-    console.log("data: " + JSON.stringify(data));
+    //console.log("data: " + JSON.stringify(data));
 
   var rules = document.getElementById('rules');
   document.getElementById("rulesTitle").style.display = "block";
@@ -15,7 +14,6 @@ function Rule(data) {
   this.node.hidden = false;
 
   if (data) {
-    console.log("data!");
     this.getElement('fn-select').value = data.fnSelect;
     this.getElement('andOr').value = data.andOr;
     this.getElement('ext-select').value = data.extSelect;
@@ -34,8 +32,8 @@ function Rule(data) {
   extRegInpt = this.getElement('ext-regex-input');
   var node_id = this.node.id;
   
-  console.log("fnRegInpt el: " + fnRegInpt.value);
-  console.log("extRegInpt el: " + extRegInpt.value);
+  //console.log("fnRegInpt el: " + fnRegInpt.value);
+  //console.log("extRegInpt el: " + extRegInpt.value);
   
   //this.getElement('fn-select').onchange = function () {setPlaceholders(this, rules, node_id, "fn-regex-input") };
   this.getElement('fn-select').onchange = function () {setDisabledAndPlaceholders(this.className, "fn-regex-input") };
@@ -66,7 +64,11 @@ function Rule(data) {
     }
     storeRules();
   };
+  
   this.getElement('remove').onclick = function() {
+    if (rule.node.parentNode.children.length == 1) // means now we're removing the last child
+        document.getElementById("rulesTitle").style.display = "none";
+
     rule.node.parentNode.removeChild(rule.node);
     storeRules();
   };
@@ -80,52 +82,6 @@ Rule.prototype.getElement = function(name) {
   return document.querySelector('#' + this.node.id + ' .' + name);
 }
 
-/*
-function setPlaceholders(regSelection, rules, rule_id, inputClass)
-{
-    console.log("setPlaceholders - "+regSelection.value + " - " + rules + " - " + rule_id);
-    for (i = 0; i < rules.childElementCount; i++) { 
-        if (rules.children[i].id == rule_id)
-        {
-            var input = rules.children[i].getElementsByClassName(inputClass)[0]
-            if (input.value == "")
-            {
-                switch(regSelection.value) {
-                    case "match":
-                        input.disabled = false;
-                        input.placeholder = "input: e.g. 'myFile', ...";
-                        break;
-                    case "contains":
-                        input.disabled = false;
-                        input.placeholder = "input: e.g. 'jpg', 'torrent',...";
-                        break;
-                    case "regexMatch":
-                        input.disabled = false;
-                        input.placeholder = "input: e.g. .*torrent.*";
-                        break;
-                    case "none":
-                        input.disabled = true;
-                        input.placeholder = "";
-                        break;
-                    case "anyVideo":
-                    case "anyAudio":
-                    case "anyImage":
-                        input.disabled = true;
-                        input.placeholder = "pre-defined query";
-                        break;
-                    default:
-                        input.placeholder = "input";
-                }
-            }
-            else if(regSelection.value == "none")
-                input.disabled = true;
-        }
-    }
-    
-    
-    storeRules();
-}
-*/
 
 Rule.prototype.render = function() {
   this.getElement('move-up').disabled = !this.node.previousSibling;
@@ -135,7 +91,7 @@ Rule.prototype.render = function() {
 Rule.next_id = 0;
 
 function loadRules() {
-  var rules = localStorage.rules;
+  var rules = localStorage.rules;  
   try {
     JSON.parse(rules).forEach(function(rule) {new Rule(rule);});
   } catch (e) {
@@ -146,8 +102,13 @@ function loadRules() {
 function checkAndStoreRules() 
 {
     storeRules();
+    document.getElementById('saveDisk').style.display="none";
     document.getElementById('savedcheck').style.display="inline";
-    setTimeout(function(){ document.getElementById('savedcheck').style.display="none"; }, 1000);
+    setTimeout(function(){
+        document.getElementById('savedcheck').style.display="none";
+        document.getElementById('saveDisk').style.display="inline";        
+        }, 1000);
+    
 }
 
 function storeRules() {
@@ -169,17 +130,21 @@ function storeRules() {
 
 function clearAll()
 {
-  console.log("clearing");
-  document.getElementById("rulesTitle").style.display = "none";
-  localStorage.rules = JSON.stringify([]);
-  //loadRules();
-  location.reload();
+  //console.log("clearing");
+  var r = confirm("Clear all rules?");
+  if (r == true) {
+    document.getElementById("rulesTitle").style.display = "none";
+    localStorage.rules = JSON.stringify([]);
+    //loadRules();
+    location.reload();
+  }
+  
   
 }
 
 function readme()
 {
-  console.log("readme");
+  //console.log("readme");
   window.open('readme.html');
   
 }
@@ -189,19 +154,9 @@ function nextVersion()
     alert("This feature will be supported in the next version");
 }
 
-/*
-function chooseFolder()
-{
-  var path = new File("~/desktop");
-  var file = path.openDlg("Choose File:");
-  alert("file: "+file);
-}
-*/
-
-
 function setDisabledAndPlaceholders(regSelection, inputClass)
 {
-    console.log("regSelection: "+regSelection + " - inputClass: " + inputClass);
+    //console.log("regSelection: "+regSelection + " - inputClass: " + inputClass);
     
     var rules = document.getElementById('rules');    
     for (i = 0; i < rules.childElementCount; i++) { 

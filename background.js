@@ -1,11 +1,4 @@
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-    if (request.greeting == "hello")
-      chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
-  });
+
 
 chrome.downloads.onDeterminingFilename.addListener(function(item, __suggest) {
   function suggest(filename, conflictAction) {
@@ -43,7 +36,7 @@ function parseRules(rules, filename)
     for (i = 0; i < rules.length; i++) { 
     
         rule = rules[i];
-        alert("rule: "+JSON.stringify(rule));
+        // alert("rule: "+JSON.stringify(rule));
         
         // rule is enabled, and at least one of the two rule types is set
         if (rule.enabled) {
@@ -98,7 +91,7 @@ function isMatchFound(fnAns, extAns, andOr)
              ans = false;
     }
     
-    alert( fnAns + "  " + andOr + "  " + extAns + "        returning: " + ans);
+    // alert( fnAns + "  " + andOr + "  " + extAns + "        returning: " + ans);
     return ans;
     
     
@@ -109,9 +102,9 @@ function performRegexMatch(regexString, data)
     /*because matchRule has a few regex options, this is a generic method to run regex match and return true or false.*/
     var ans = false;
     var re = new RegExp(regexString, "i");
-    alert("performing regex-match-query for re: "+re);
+    // alert("performing regex-match-query for re: "+re);
     if (data.search(re) > -1) {
-        alert("REGEXTMATCH match!");
+        // alert("REGEXTMATCH match!");
         ans = true;
      }
     return ans;
@@ -133,7 +126,7 @@ function matchRule(selectionType, selectionInput, data)
         case "match":
             //alert("MATCH ruletype for selection-type: "+ selectionType + " - data: " + data);
             if (selectionInput == data) {
-                alert("MATCH match!");
+                // alert("MATCH match!");
                 ans = true;
             }
             break;
@@ -142,7 +135,7 @@ function matchRule(selectionType, selectionInput, data)
             // alert("CONTAINS type: "+ selectionType + " - data: " + data);
             // alert("CONTAINS res: "+ data.indexOf(selectionInput));
             if (data.indexOf(selectionInput) != -1) {
-                alert("CONTAINS match!");
+                // alert("CONTAINS match!");
                 ans = true;
             }
             break;

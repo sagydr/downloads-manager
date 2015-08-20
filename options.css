@@ -137,12 +137,12 @@ input[type="text"]:disabled {
     background: #cccccc;
 }
 
-/*
+
 input[type="text"]:focus,select:focus{
   border: solid 1px #0A1E14;
   box-shadow: 0 0 5px 1px #969696;
 }
-*/
+
 
 /*
 input[type="text"] ,select{
@@ -151,10 +151,11 @@ input[type="text"] ,select{
     outline: 0px rgba(0,0,0,0) solid;
     transition: outline-color .3s
 }
-input[type="text"]:focus,select:focus, #new{
+input[type="text"]:focus,select:focus, #save{
     z-index:1000;
     position:relative;
     border:1px solid #f60;
     outline: 5000px rgba(0,0,0,.6) solid ;
 }
+
 */
