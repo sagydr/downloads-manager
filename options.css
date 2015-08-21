@@ -1,6 +1,6 @@
 body {
     /*background-image: url("bg.jpg");*/
-    width: 355px;
+    width: 640px;
     
   /*background: -webkit-linear-gradient(90deg, #085078 10%, #85D8CE 90%); /* Chrome 10+, Saf5.1+ */
   /*  background: -webkit-linear-gradient(90deg, #FFFFFF 10%, #CCFFCC 90%); /* Chrome 10+, Saf5.1+ */
@@ -74,7 +74,7 @@ wrapper {
 
 input, select {
     font-size: 10px;
-    width: 39%;
+    width: 35%;
     border: 1px solid #339966;
     padding: 0;
     margin: 0;
@@ -88,14 +88,15 @@ input {
 }
 #andOr{
     font-size: 9px;
-    width: 18%;
+    padding-left: 4px;
+    width: 14%;
     height: 14px;
     position: relative;
 }
 
 #andOr2{
     font-size: 9px;
-    width: 18%;
+    width: 14%;
     height: 14px;
 }
 
