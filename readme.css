@@ -115,7 +115,7 @@ button.settings {
 	white-space: nowrap;
 	text-decoration: none;
 	cursor: pointer;
-	background: #A9014B url(button_overlay.png) repeat-x scroll 0 0;
+	background: #A9014B repeat-x scroll 0 0;
 	border-style: none;
 	text-align: center;
 	overflow: visible;
