@@ -6,7 +6,6 @@ chrome.downloads.onDeterminingFilename.addListener(function(item, __suggest) {
     __suggest({filename: filename,
                conflictAction: conflictAction,
                conflict_action: conflictAction});
-    //return "qqqqqqqq";
   }
   
   // alert("onDeterminingFilename. filename = "+JSON.stringify(item.filename));

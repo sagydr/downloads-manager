@@ -1,11 +1,11 @@
 {
  "name": "Downloads Organizer",
  "short_name": "Dnlds Orgnzr",
- "description": "A simple Downloads Organizer, define rules to organize downloads into your chosen folders.",
- "version": "0.1",
+ "description": "A simple Download Organizer, define rules to organize downloads into your chosen folders.",
+ "version": "0.1.2",
  
  "background": {
-    "page": "background.html",
+   "scripts": ["background.js"],
     "persistent": false
  },
  
