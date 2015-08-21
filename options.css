@@ -1,6 +1,6 @@
 body {
     /*background-image: url("bg.jpg");*/
-    width: 640px;
+    width: 400px;
     
   /*background: -webkit-linear-gradient(90deg, #085078 10%, #85D8CE 90%); /* Chrome 10+, Saf5.1+ */
   /*  background: -webkit-linear-gradient(90deg, #FFFFFF 10%, #CCFFCC 90%); /* Chrome 10+, Saf5.1+ */
@@ -89,14 +89,14 @@ input {
 #andOr{
     font-size: 9px;
     padding-left: 4px;
-    width: 14%;
+    width: 18%;
     height: 14px;
     position: relative;
 }
 
 #andOr2{
     font-size: 9px;
-    width: 14%;
+    width: 18%;
     height: 14px;
 }
 
