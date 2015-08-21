@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="options.css" rel="stylesheet" type="text/css">
     <link href="social-buttons.css" rel="stylesheet" type="text/css">
-    <title>Download Filename Controller</title>
+    <title>Downloads Organizer popup options</title>
     <script src="options.js"></script>
     
 </head>
@@ -46,8 +46,8 @@
         <tr hidden="" id="rule-template">
               
             <td class="nowrap">
-                <button class="move-up">&uarr;</button>
-                <button class="move-down">&darr;</button>
+                <button id="move-up" class="move-up">&uarr;</button>
+                <button id="move-down" class="move-down">&darr;</button>
             </td>
       
             <td>
@@ -109,7 +109,7 @@
                  
                  <div class="remove">
                     <!-- <button class="remove-button">Remove</button> -->
-                    <button type="button" class="close remove-button" aria-label="Close"><span aria-hidden="true">remove</span></button>
+                    <button id="remove-rule" type="button" class="close remove-button" aria-label="Close"><span aria-hidden="true">remove</span></button>
                  </div>
              </td>
              

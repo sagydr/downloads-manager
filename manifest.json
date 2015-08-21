@@ -1,18 +1,19 @@
 {
- "name": "Downloads Manager",
- "description": "Downloads Manager",
+ "name": "Downloads Organizer",
+ "short_name": "Dnlds Orgnzr",
+ "description": "A simple Downloads Organizer, define rules to organize downloads into your chosen folders.",
  "version": "0.1",
  
  "background": {
-    "scripts": ["background.js"],
+    "page": "background.html",
     "persistent": false
  },
  
  "browser_action": {
-    "default_icon": {                    // optional
-    "38": "logos/downloads_48.png",            // optional
+    "default_icon": {
+    "38": "logos/downloads_48.png",
     "32": "logos/downloads_32.png",
-    "16": "logos/downloads_32.png",
+    "16": "logos/downloads_16.png",
     "48": "logos/downloads_48.png",
     "64": "logos/downloads_64.png",
     "128": "logos/downloads_128.png"
@@ -28,7 +29,12 @@
   },    
  
  "options_page": "options.html",
- "permissions": ["downloads"],
+ "permissions": [
+    "downloads",
+    "https://www.google-analytics.com/",
+    "storage"
+  ],
+ 
+ "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
  "manifest_version": 2
 }
-  

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="readme.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title>My Readme Page</title>
-    <script type="text/javascript" src="readme.js"></script>
+    <script src="readme.js"></script>
 </head>
 
 <body>
@@ -13,7 +12,10 @@
 <div id="title">
     <b>
         <h1 id="smallHeadline">By <i class="accent">Sagy Drucker</i></h1>
-        <h2 id="largeHeadline">Simple Downloads Organizer</h2>
+        <h2 id="largeHeadline">Simple Downloads Organizer&nbsp;&nbsp;&nbsp;</h2>
+        <h1 id="smallHeadline">Define simple rules on the downloaded file names and/or<br>
+            file formats for organizing your downloads<br>
+            into various chosen folders.</i></h1> 
         <br><br>
     </b>
 </div>
@@ -46,10 +48,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;2. Place all your required download folders as <b>sub-diretories of the main download folder</b>.
 </div>
 
-<p><b><a class="hrefButton" href="#setRulesTitle">Set Rules</a>
-<a class="hrefButton" href="#examples">Examples</a>
-<a class="hrefButton" href="#qna">Q &amp; A</a>
-<a class="hrefButton" href="#contactMe">About</a></b></p>
+<p><b><a id="set-rules-instructions" class="hrefButton" href="#setRulesTitle">Set Rules</a>
+<a id="examples" class="hrefButton" href="#examples">Examples</a>
+<a id="QnA" class="hrefButton" href="#qna">Q &amp; A</a>
+<a id="contact-me" class="hrefButton" href="#contactMe">About</a></b></p>
 
 <p>
 <h1 id="setRulesTitle">Set Rules:</h1>
@@ -65,7 +67,7 @@
             <li><strong>exact match</strong> - input must match exactly the filename or extension.
             <li><strong>part of</strong> - input needs to be a part of the filename or extension.<br> e.g. "tor" is part of the extension .torrent.<br>
                 "science" is part of the filename "my_science_book".
-            <li><strong>regular expression</strong> - advanced usage. If you have knowledge of regular expressions you can define them here and they will be applied 
+            <li><strong>regular expression</strong> - advanced usage. If you have knowledge of regular expressions you can define them here<br> and they will be applied 
                 to the filename or extension.<br>e.g ".*tor.*[0-9].*" is a valid regular expression input.
            </ul>
            <br>
@@ -123,7 +125,7 @@
     <strong>Q:</strong> Are rules case-sensitive?<br>
     <strong>A:</strong> NO! All rules are case-INsensitive.<br><br>
     <strong>Q:</strong> How is "any video format" defined?<br>
-    <strong>A:</strong> It is a regular expression combining all video file formats ("...m4v|mkv|mod|mov|mp4|mpeg|...") taken from: <a href="http://www.online-convert.com/file-type">online-convert.com</a>
+    <strong>A:</strong> It is a regular expression combining all video file formats ("...m4v|mkv|mod|mov|mp4|mpeg|...") taken from: <a id="link-to-online-convert" href="http://www.online-convert.com/file-type">online-convert.com</a>
         <br>&nbsp;&nbsp;&nbsp;&nbsp;All other pre-defined formats are taken from there too.<br> <br>
     <strong>Q:</strong> Can you add more features and pre-defined rules?<br>
     <strong>A:</strong> Sure. Send me your ideas.<br><br>
