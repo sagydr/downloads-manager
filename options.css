@@ -1,35 +1,179 @@
 body {
-    background-image: url("bg.jpg");
-    width: 250px;
+    /*background-image: url("bg.jpg");*/
+    width: 400px;
+    
+  /*background: -webkit-linear-gradient(90deg, #085078 10%, #85D8CE 90%); /* Chrome 10+, Saf5.1+ */
+  /*  background: -webkit-linear-gradient(90deg, #FFFFFF 10%, #CCFFCC 90%); /* Chrome 10+, Saf5.1+ */
+   background: -webkit-linear-gradient(90deg, #9AD1F6 10%, #B9E1FC 90%); /* Chrome 10+, Saf5.1+ */
 }
 
+
 header
-{
+{   
   text-align: center;
   position: center;
-  height: 45px;
+  height: 100%;
   margin-bottom: 40px;
+  /*
+  background: repeating-linear-gradient(
+  45deg,
+  #CCFFCC,
+  #99FF99 10px,
+  #99FFCC 10px,
+  #66FF66 20px
+  
+    ); */
+   background-color: #000000;
+   color: #D0F8FF;
+    text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+             0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+             0 0 40px #A5F1FF;
+    
+    font-size: 22px;
+
+}
+
+#version {
+    font-size: 12px;
+    text-align: center;
+  position: center;
 }
 
 wrapper {
     text-align: right;
 }
 
-button {
-    position: right;
-    top: 50%;
+#buttons{
+    text-align: center;
+    position: center;
+    margin-left: 0%;
+    margin: 6px;
 }
 
-.rulesDescription{
-    white-space:pre; /* or pre-wrap if you want wrapping to still work. */
+/*
+#readme {
+    background:none;
+    border:none; 
+    cursor: pointer;
+    color: #0B00BB;
+    font-size: 100%;
+    margin-left: 0%;
+}
+*/
+
+#regexes{
+    display:inline-block;
+    width: 100%;
+    float:left;
 }
 
-input[type="text"],select {
-  padding: 4px;
-  border: solid 1px #339966;
-  transition: box-shadow 0.3s, border 0.3s;
+#rulesDescriptionTitleLeft, #rulesDescriptionTitleRight{
+    idth: 35%;
+     margin: 0;
+      display:inline-block;
+      float:left;
+      margin-left: 10%;
 }
+#rulesDescriptionTitleRight{
+      float:right;
+      margin-right: 25%;
+}
+
+
+/*
+.rulesTitle {
+     display:inline-block;
+    font-size: 12px;
+    left:12%;
+    padding: 0%;
+    position: relative;
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+}
+*/
+
+input, select {
+    font-size: 10px;
+    width: 35%;
+    border: 1px solid #339966;
+    padding: 0;
+    margin: 0;
+    height: 100% /*18px;*/
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+input {
+    text-indent: 4px;
+}
+#andOr{
+    font-size: 9px;
+    padding-left: 4px;
+    width: 18%;
+    height: 14px;
+    position: relative;
+}
+
+#andOr2{
+    font-size: 9px;
+    width: 18%;
+    height: 14px;
+}
+
+
+
+.folder-input {
+    width: 45%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+
+input[type="checkbox"]{
+  width: 25%; /*20px; */
+}
+
+.enabled, .checkbox {
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    margin-left: -5px;
+    *overflow: hidden;
+    text-shadow: 2px 2px 2px #CCCCCC;
+}
+
+.remove {
+    height: 15px;
+    margin-left: -4px;
+}
+
+input[type="text"]:disabled {
+    background: #cccccc;
+}
+
+
 input[type="text"]:focus,select:focus{
   border: solid 1px #0A1E14;
   box-shadow: 0 0 5px 1px #969696;
 }
+
+
+/*
+input[type="text"] ,select{
+    -webkit-appearance: textfield;
+    background:url('icons.png') #fff no-repeat 5px -601px;
+    outline: 0px rgba(0,0,0,0) solid;
+    transition: outline-color .3s
+}
+input[type="text"]:focus,select:focus, #save{
+    z-index:1000;
+    position:relative;
+    border:1px solid #f60;
+    outline: 5000px rgba(0,0,0,.6) solid ;
+}
+
+*/

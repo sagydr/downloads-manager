@@ -1,61 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="options.css" rel="stylesheet" type="text/css">
-    <title>Download Filename Controller</title>
+    <link href="social-buttons.css" rel="stylesheet" type="text/css">
+    <title>Downloads Organizer popup options</title>
     <script src="options.js"></script>
+    
 </head>
 
 <body>
     <header>
-        <img id="logo" src="downloads_64.png" srcset="downloads_128.png 2x">
+
+        Downloads <img id="logo" src="logos/downloads_128.png" srcset="logos/downloads_128.png 2x"> Organizer<br>
+        <div id="version">&nbsp;</div>
     </header>
+    
+    <div id="rulesTitle" class="rulesTitle" style="display: none">
+        <div id="rulesDescriptionTitleLeft">
+            <span class="rulesDescription"><strong>File name rule</strong></span>
+        </div>
+        <div id="rulesDescriptionTitleRight">
+            <span class="rulesDescription"><strong>File format rule</strong></span>
+        </div>
+        <br>
+    </div>
 
     <table id="rules"></table>
-    <button id="new">New Rule</button>
-    <button id="clearAll">Clear Rules</button>
-    <button id="readme">How to Use</button>
-    <button id="exportRules">Export Rules</button>
-    <button id="importRules">Import Rules</button>
+    <div id="buttons">
+        <button type="button" class="btn btn-primary btn-xs" id="new">New Rule</button>
+        <button type="button" id="save" class="btn btn-success btn-xs">
+            <i id="savedcheck" class="fa fa-check-circle"></i><i id="saveDisk" class="fa fa-save"></i> | Save Rules</button>
+        <button id="clearAll" type="button" class="btn btn-warning btn-xs">Clear Rules</button>
+    </div>
+    <div id="buttons">
+        <button type="button" class="btn btn-primary btn-xs fa fa-arrow-circle-up" id="exportRules"> | Export Rules</button>
+        <button type="button" class="btn btn-primary btn-xs fa fa-arrow-circle-down" id="importRules"> | Import Rules</button>
+        <!--<button type="button" class="btn btn-primary btn-xs btn-default" id="readme" font-size="10%">instructions</button>        -->
+    </div>
+    <div id="buttons">
+        <button id="readme">
+            <i id="readme" class="fa fa-sliders"> | instructions</i>
+        </button>
+    </div>
+
+
 
     <table hidden="">
-        <tr hidden="" id="rule-template">
-            <td class="nowrap">
-                <button class="move-up">&uarr;</button>
-                <button class="move-down">&darr;</button>
-            </td>
 
+        <tr hidden="" id="rule-template">
+              
+            <td class="nowrap">
+                <button id="move-up" class="move-up">&uarr;</button>
+                <button id="move-down" class="move-down">&darr;</button>
+            </td>
+      
             <td>
-                <span class="rulesDescription">filename rule          file extension rule</span>
-                <div> 
-                <select class="regex" id="regex">
-                    <option selected="selected" value="extension">file extension</option>
-                    <option value="contains">part of filename</option>
-                    <option value="regexMatch">regular expression</option>
-                </select>
+
+                
+                <div id="regexes"> 
+                    <select class="fn-select" id="fn-select">
+                        <option selected="selected" value="none" placeholder="" inputDisabled="inputDisabled">none</option>
+                        <option value="match" placeholder="e.g. 'myFile'">File name exact match</option>
+                        <option value="contains" placeholder="e.g. work_">Part of file name</option>
+                        <option value="regexMatch" placeholder="e.g .*[0-9]{6}*">Regular expression (advanced)</option>
+                    </select>
+                    
+                    <select class="andOr" id="andOr">
+                        <option selected="selected" value="or">OR</option>
+                        <option value="and">AND</option>
+                    </select>
+                    
+                    <select class="ext-select" id="ext-select">
+                        <option selected="selected" value="none" placeholder="" inputDisabled="inputDisabled">none</option>
+                        <option value="anyVideo" placeholder="any video format" inputDisabled="inputDisabled">any video format</option>
+                        <option value="anyAudio" placeholder="any audio format" inputDisabled="inputDisabled">any audio format</option>
+                        <option value="anyImage" placeholder="any image format" inputDisabled="inputDisabled">any image format</option>
+                        <option value="none" disabled>----- other ------</option>
+                        <option value="match" placeholder="e.g. 'jpg'">Extension exact match</option>
+                        <option value="contains" placeholder="e.g 'mp'">Part of extension</option>
+                        <option value="regexMatch" placeholder="e.g .*torrent.*">Regular expression (advanced)</option>
+                    </select>
                 
                 </div>
                 
+                <div id="regex-inputs">
+                    <input class="fn-regex-input" id="fn-regex-input" type="text">
+                    <input class="andOr2" id="andOr2" style="visibility: hidden">
+                    <input class="ext-regex-input" id="ext-regex-input" type="text">
+                </div>
 
-                <input class="regex-input" id="regex-input" placeholder="input e.g. 'jpg', 'torrent'" type="text">
-                <!--
-                <script>
-                    if (document.getElementById("regex").value == "regexMatch") {
-                        document.getElementById("regex-input").placeholder = "Good day!";
-                    }
-                </script>
-                -->
-                
-                <input align="right" class="folder" placeholder="folder: e.g. c/torrents/" type="text"> 
+                <div id="folder-input">
+                    <input class="folder-input" placeholder="folder: e.g. torrents/" type="text"> 
+                </div>
+                <div>
+                    ------------------------------------------------ 
+                </div>
                 <!-- <button type="button" id=chooseFolder>folder</button> -->
                 <p> <!-- empty line after each rule -->
             </td>
 
             <td>
-                <span class="nowrap"><input checked class="enabled" type="checkbox">
+                 <!-- <span class="nowrap">
+                    <input checked class="enabled" type="checkbox">
                     <label class="enabled-label">Enabled</label>
-                </span>
-            <button class="remove">Remove</button></td>
+                 </span> -->
+                 
+                 <div class="checkbox">
+                    <label class="enabled-label">
+                      <input checked class="enabled" type="checkbox"> Enabled
+                    </label>
+                  </div>
+                 
+                 <div class="remove">
+                    <!-- <button class="remove-button">Remove</button> -->
+                    <button id="remove-rule" type="button" class="close remove-button" aria-label="Close"><span aria-hidden="true">remove</span></button>
+                 </div>
+             </td>
+             
         </tr>
     </table>
     
