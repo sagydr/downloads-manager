@@ -6,7 +6,8 @@ header
 {
   text-align: center;
   position: center;
-  height: 45px;
+  width: 440px;
+    height: 280px;
   margin-bottom: 40px;
 }
 
@@ -24,16 +25,15 @@ button.settings {
 }
 
 #title {
-    font-size: 150%;
-    background-image: url("gradient_bg.png");
+    font-size: 100%;
+    /*background-image: url("gradient_bg.png");*/
+    background: -webkit-linear-gradient(90deg, #72F2F2 30%, #B9E1FC 90%);
+    width: 445px;
+    height: 280px;
 }
-#intro {
-    font-size: 150%;
+#icon {
+    margin-left: 30%;
 }
-
-
-
-
 #smallHeadline{
     font-family: Gill Sans, Verdana;
 	font-size: 11px;
@@ -52,6 +52,43 @@ button.settings {
 	letter-spacing: -2px;
 	font-weight: bold;
 }
+/*------------------- 920 x 680 --------------------------------------------------------------------------*/
+.promotion920on680 {
+    font-size: 100%;
+    /*background-image: url("gradient_bg.png");*/
+    background: -webkit-linear-gradient(90deg, #72F2F2 30%, #B9E1FC 90%);
+    width: 920px;
+    height: 680px;
+}
+.icon920{  margin-left: 2%; }
+#icon1{ margin-left: 10%;}  
+#smallHeadline920{
+    font-family: Gill Sans, Verdana;
+	font-size: 20px;
+	line-height: 14px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+#largeHeadline920{
+    font-family: times, Times New Roman, times-roman, georgia, serif;
+	color: #444;
+	margin: 0;
+	padding: 0px 0px 6px 0px;
+	font-size: 86px;
+	line-height: 44px;
+	letter-spacing: -2px;
+	font-weight: bold;
+}
+
+
+
+#intro {
+    font-size: 150%;
+}
+
+
+
 
 #newRule {
     font-size: 150%;
