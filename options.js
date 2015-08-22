@@ -91,6 +91,7 @@ function loadRules() {
   var rules = localStorage.rules;  
   try {
     JSON.parse(rules).forEach(function(rule) {new Rule(rule);});
+
   } catch (e) {
     localStorage.rules = JSON.stringify([]);
   }
@@ -130,7 +131,7 @@ function clearAll()
   //console.log("clearing");
   var r = confirm("Clear all rules?");
   if (r == true) {
-    document.getElementById("rulesTitle").style.display = "none";
+    //document.getElementById("rulesTitle").style.display = "none";
     localStorage.rules = JSON.stringify([]);
     //loadRules();
     location.reload();
@@ -189,7 +190,6 @@ function updateVersion() {
 }
 
 window.onload = function() {
-  updateVersion();
   loadRules();
   document.getElementById('savedcheck').style.display="none";
   setDisabledAndPlaceholders("fn-select", "fn-regex-input");
@@ -200,6 +200,7 @@ window.onload = function() {
   document.getElementById('readme').onclick = readme;
   document.getElementById('exportRules').onclick = nextVersion;
   document.getElementById('importRules').onclick = nextVersion;
+  updateVersion();
 }
 
 // google analytics:
