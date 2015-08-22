@@ -142,9 +142,7 @@ function clearAll()
 
 function readme()
 {
-  //console.log("readme");
-  window.open('readme.html');
-  
+  window.open('readme.html'); 
 }
 
 function nextVersion()
@@ -172,16 +170,24 @@ function setDisabledAndPlaceholders(regSelection, inputClass)
         var inputDisabled = selectionElement[selectedIndex].getAttribute("inputDisabled");
         inputElement.disabled = inputDisabled;
         
-        /*
-        if (selectionValue == "none" || selectionValue == "anyVideo" || selectionValue == "anyAudio") {
-            
-            var input = rules.children[i].getElementsByClassName(inputClass)[0]
-            //console.log("setting "+rules.children[i].id + " to disable");
-            rules.children[i].getElementsByClassName(inputClass)[0].placeholder = rules.children[i].getElementsByClassName(regSelection)[0].placeholder
-            input.disabled = true;
-        }
-        */
     }
+}
+
+function shareOnFacebook() {
+    var x= "Downloads Organizer extension";
+    var z = x.bold();
+    var chromeStoreUrl = "https://chrome.google.com/webstore/detail/downloads-organizer/ojcigfnpgjnigkofinamblilahbdghgi?utm_source=gmail";
+    var url = "https://www.facebook.com/dialog/feed?\
+    app_id=145634995501895&\
+    link="+chromeStoreUrl+"&\
+    display=popup&\
+    caption="+z+"&\
+    redirect_uri=https%3A%2F%2Fwww.facebook.com%2F&\
+    name=I'm also organizing my downloads using "+z+"&\
+    actions=%5B%7B%22name%22%3A%22get%20Downloads%20Organizer%20now%22%2C%22link%22%3A%22%20https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fdownloads-organizer%2Fojcigfnpgjnigkofinamblilahbdghgi%3Futm_source%3Dgmail%22%7D%5D";
+   
+  var win = window.open(url, '_blank');
+  win.focus();
 }
 
 function updateVersion() {
@@ -198,6 +204,7 @@ window.onload = function() {
   document.getElementById('save').onclick = checkAndStoreRules;
   document.getElementById('clearAll').onclick = clearAll;
   document.getElementById('readme').onclick = readme;
+  document.getElementById('shareOnFacebook').onclick = shareOnFacebook;
   document.getElementById('exportRules').onclick = nextVersion;
   document.getElementById('importRules').onclick = nextVersion;
   updateVersion();
